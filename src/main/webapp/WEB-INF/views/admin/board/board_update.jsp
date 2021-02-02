@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Modify</h1>
+            <h1 class="m-0">게시글수정</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Modify</li>
+              <li class="breadcrumb-item active">게시글수정</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -36,13 +36,13 @@
           
           <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Update Board</h3>
+                <h3 class="card-title">UPDATE Board</h3>
               </div>
               <!-- /.card-header -->
               
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="board_type">Board Type</label>
+                    <label for="board_type">게시판타입</label>
                     <select name="board_type" id="board_type" class="form-control">
                     <c:forEach items="${board_type_list}" var="boardTypeVO">
                     	<option value="${boardTypeVO.board_type}" <c:out value="${(session_board_type eq boardTypeVO.board_type)?'selected':'' }" />>${boardTypeVO.board_name}</option>
@@ -50,7 +50,7 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">title</label>
                     <input type="text" value="${boardVO.title}" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요." required>
                     <!-- 폼에서 input같은 입력태그에는 name속성이 반드시 필요, 이유는 DB에 입력할때,
                     	 값을 전송하게 되는데, 전송값을 담아두는 이름이 name가 되고, 위에서는 user_id 입니다. -->
@@ -61,7 +61,7 @@
                   	<!-- 필수입력 값은 html5에서 지원하는 유효성 검사중 required 속성을 사용해서 빈(null)값체크(유효성검사)를 합니다. -->
                   </div>
                   <div class="form-group">
-                  	<label for="writer">Writer</label>
+                  	<label for="writer">writer</label>
                   	<input type="text" value="${boardVO.writer}" class="form-control" name="writer" id="writer" placeholder="작성자를 입력해 주세요" required>
                   </div>
                   <div class="form-group" style="margin-bottom:0px;">
@@ -71,17 +71,17 @@
                   <div class="div_file_delete"><!-- 폴더삭제+DB삭제+화면삭제용 div영역지정 -->
                   	<div class="custom-file">
                     <input type="file" name="file" class="custom-file-input" id="customFile_${index}">
-                    <label class="custom-file-label" for="customFile_${index}" style="color:#999;">Attach File${index}</label>
+                    <label class="custom-file-label" for="customFile_${index}" style="color:#999;">파일첨부${index}</label>
 	                </div>
 	                <c:if test="${boardVO.save_file_names[index] != null}">
-			              <strong><i class="far fa-save mr-1"></i> Attached File${index}</strong>
+			              <strong><i class="far fa-save mr-1"></i> 첨부파일${index}</strong>
 			              <p class="text-muted">
 			              <a href="/download?save_file_name=${boardVO.save_file_names[index]}&real_file_name=${boardVO.real_file_names[index]}">
-			              ${boardVO.real_file_names[index]}-File Download
+			              ${boardVO.real_file_names[index]}-파일다운로드
 			              </a>
 			              &nbsp;
 			              <input type="hidden" name="save_file_name" value="${boardVO.save_file_names[index]}" >
-			              <button type="button" class="btn btn-info btn_file_delete">Delete</button>
+			              <button type="button" class="btn btn-info btn_file_delete">삭제</button>
 			              </p>
 		            </c:if>
 		            <hr>
@@ -134,7 +134,7 @@ $(document).ready(function(){
 	$('#content').summernote({
 		height:150,
 		lang:"ko-KR",
-		placeholder:'Enter the contents',
+		placeholder:'글 내용을 입력해 주세요',
 		toolbar: [
 				    ['fontname', ['fontname']],
 				    ['fontsize', ['fontsize']],
@@ -169,7 +169,7 @@ $(document).ready(function(){
 					}
 				},
 				error:function(result){
-					alert("RestAPI접근 실패");
+					alert("RestAPI접근에 실패했습니다.");
 					//click_element.parents(".div_file_delete").remove();//디버그
 				}
 			});			
