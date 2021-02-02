@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title> 스프링 </title>
+<title> 아름다울 휘 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +37,7 @@ if('${msg}' != '') {//자바의 EL표기법 = 달라{변수명}
 	<header id="header">
 		<div class="header_area box_inner clear">
 			<!-- 상단로고영역 -->
-			<h1><a href="/">스프링 in 자바</a></h1>
+			<h1><a href="/">아름다울 휘</a></h1>
 			<!-- //상단로고영역 -->
 			
 			<!-- 상단메뉴메뉴영역 -->

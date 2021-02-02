@@ -6,7 +6,7 @@
 /* 메인상단 위치표시영역 */
 .location_area {
 	height: 260px;
-	background: url(../img/img_top2.jpg) no-repeat center;
+	background: #777;
 }
 .tit_page {
 	padding: 140px 0 0 0;
@@ -100,7 +100,7 @@ input::placeholder {
 	padding: 0;
 	box-sizing: border-box;
 	height: 45px;
-	background: #fef3fa;
+	background: #ccc;
 }
 .bbsListTbl td:nth-child(1) {display: none;}
 .bbsListTbl td:nth-child(3) {display: none;}

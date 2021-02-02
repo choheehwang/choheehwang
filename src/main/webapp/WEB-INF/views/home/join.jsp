@@ -104,7 +104,7 @@ jQuery(document).ready(function(){
 		<!-- 메인상단위치표시영역 -->
 		<div class="location_area customer">
 			<div class="box_inner">
-				<h2 class="tit_page">스프링 <span class="in">in</span> 자바</h2>
+				<h2 class="tit_page">아름다울 휘</h2>
 				<p class="location">MYPAGE <span class="path">/</span> 회원등록</p>
 				<ul class="page_menu clear">
 					<li><a href="#" class="on">회원등록</a></li>

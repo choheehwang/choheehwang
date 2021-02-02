@@ -37,21 +37,21 @@ $(document).ready(function(){
                     <li class="imglist0">
                         <div class="roll_content">
                             <a href="javascript:;">
-							<p class="roll_txtline">OOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
+							<p class="roll_txtline">안녕하세요, 아름다울 휘입니다.</p>
 							</a>
                         </div>
                     </li>
                     <li class="imglist1">
                         <div class="roll_content">
                             <a href="javascript:;">
-							<p class="roll_txtline">OOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
+							<p class="roll_txtline">오늘, 당신의 식탁은 안전했나요?</p>
 							</a>
                         </div>
                     </li>
                     <li class="imglist2">
                         <div class="roll_content">
                             <a href="javascript:;">
-							<p class="roll_txtline">OOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
+							<p class="roll_txtline">진정한 이너뷰티의 시작, 아름다울 휘에서 시작하세요!</p>
 							</a>
                         </div>
                     </li>

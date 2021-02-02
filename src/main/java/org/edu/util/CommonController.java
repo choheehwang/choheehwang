@@ -53,6 +53,7 @@ public class CommonController {
 	 */
 	@SuppressWarnings("serial")
 	private ArrayList<String> checkImgArray = new ArrayList<String>() {
+		// 첨부파일 확장자
 		{
 			add("gif");
 			add("jpg");
@@ -83,19 +84,19 @@ public class CommonController {
 	public ResponseEntity<byte[]> getImageAsByteArray(@RequestParam("save_file_name") String save_file_name, HttpServletResponse response) throws IOException {
 		FileInputStream fis = null;
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		fis = new FileInputStream(uploadPath + "/" + save_file_name);//업로드된 이미지를 fis변수 저장
+		fis = new FileInputStream(uploadPath + "/" + save_file_name); // 업로드된 이미지 fis변수에 저장
 		int readCount = 0;
-		byte[] buffer = new byte[1024];//1k바이트 단위로 읽어 들이기 위해서
+		byte[] buffer = new byte[1024];
 		byte[] fileArray = null;
 	while((readCount = fis.read(buffer)) != -1){
 		baos.write(buffer,0,readCount);
 	}
-	fileArray = baos.toByteArray(); // 바이트 단위로 되있는 변수에 아웃풋스트림내용을 저장해서 return 으로 반환
-	fis.close(); // 고전 자바프로그램에서는 메모리 관리를 위해서 fis파일인풋스트림변수 생성후 소멸시키는 작업이 필수
-	baos.close(); // 스프링프레임워크 기반의 프로그램구조에서는 close와 같은 메모리관리가 할 필요없습니다. = 스프링에는 가비지컬렉트기능이 내장.
-	final HttpHeaders headers = new HttpHeaders(); // 크롬 개발자도구>네트워크>image_preview클릭>헤더탭확인
-	String ext = FilenameUtils.getExtension(save_file_name);//파일 확장자 구하기
-	switch(ext.toLowerCase()) { // 확장자 소문자로 변경후 스위치 ~ 케이스문으로 분리
+	fileArray = baos.toByteArray(); // 바이트 단위로 되어있는 변수에 baos 내용을 저장해서 return
+	fis.close(); // 메모리 관리를 위해 fis파일 변수 생성후 소멸시키는 작업이 필수
+	baos.close(); // 스프링은 메모리 직접 관리 하지 않아도 된다 = 가비지 컬렉터가 있기 때문
+	final HttpHeaders headers = new HttpHeaders();
+	String ext = FilenameUtils.getExtension(save_file_name); // 파일 확장자 구하기
+	switch(ext.toLowerCase()) { // 확장자 소문자로 변경후 스위치, 케이스문으로 분리
 	case "png":
 		headers.setContentType(MediaType.IMAGE_PNG);break;
 	case "jpg":
@@ -114,16 +115,15 @@ public class CommonController {
 	
 	}
 
-	//파일 다운로드 구현한 메서드(아래)
-	
+	// 파일 다운로드 구현한 메서드(아래)
 	@RequestMapping(value="/download", method=RequestMethod.GET)
-	@ResponseBody // 현재 페이지에 구현결과를 전송 받음
+	@ResponseBody // 현재 페이지에 구현결과 수신
 	public FileSystemResource download(
 			@RequestParam("save_file_name") String save_file_name,
 			@RequestParam("real_file_name") String real_file_name,
 			HttpServletResponse response // 라이브러리 클래스
-			) throws Exception { // FileSystemResource로 현재 페이지에서 반환받음
-		File file = new File(uploadPath + "/" + save_file_name); // 다운받을 경로 지정
+			) throws Exception { // FileSystemResource로 현재 페이지에서 return
+		File file = new File(uploadPath + "/" + save_file_name); // 다운로드 받을 경로 지정
 		response.setContentType("application/download; utf-8"); // 파일 내용 한글 깨지는 상황 방지
 		real_file_name = URLEncoder.encode(real_file_name, "UTF-8").replaceAll("\\+", "%20"); // 파일명 한글 깨지는 상황 방지
 		response.setHeader("Content-Disposition", "attachment; filename=" + real_file_name);
@@ -132,16 +132,16 @@ public class CommonController {
 	
 	// 파일 업로드-xml에서 지정한 폴더에 실제 파일을 저장하는 method 구현(아래)
 	public String fileUpload(MultipartFile file) throws IOException {
-		String realFileName = file.getOriginalFilename(); // jsp에서 전송한 파일명 -> 확장자를 구하는 용도
+		String realFileName = file.getOriginalFilename(); // 확장자 구하기
 		// 폴더에 저장할 PK용 파일명 생성(아래)
-		UUID uid = UUID.randomUUID(); // 유니크 아이디 생성 -> 폴더에 저장할 파일명으로 사용
-		//String saveFileName = uid.toString() + "." + realFileName.split("\\.")[1];
+		UUID uid = UUID.randomUUID(); // 유니크 아이디 생성하여 폴더에 저장할 파일명으로 사용
+		// String saveFileName = uid.toString() + "." + realFileName.split("\\.")[1];
 		String saveFileName = uid.toString() + "." + StringUtils.getFilenameExtension(realFileName);
-		// split(regex); => regular expression(정규표현식)
+		// split(regex); => regular expression
 		// String[] files = new String[] {saveFileName}; // string으로 형 변환
-		byte[] fileData = file.getBytes(); // jsp폼에서 전송된 파일이 fileData변수(메모리)에 저장
+		byte[] fileData = file.getBytes(); // jsp폼에서 전송된 파일이 fileData변수에 저장됨
 		File target = new File(uploadPath, saveFileName); // 파일 저장하기 바로 전 설정 저장
-		FileCopyUtils.copy(fileData, target); // 실제로 target폴더에 파일로 저장되는 method = 업로드 종료
+		FileCopyUtils.copy(fileData, target); // 실제로 target폴더에 파일로 저장되는 method
 		return saveFileName;
 	}
 	
@@ -150,7 +150,7 @@ public class CommonController {
 	@RequestMapping(value="/id_check", method=RequestMethod.GET)
 	@ResponseBody
 	public String id_check(@RequestParam("user_id") String user_id) {
-		String result = "0"; // id 중복값 체크
+		String result = "0"; // id 중복 체크
 		try {
 			MemberVO memberVO = memberService.readMember(user_id);
 			if(memberVO != null) {
@@ -173,7 +173,7 @@ public class CommonController {
 			// 실제 폴더에서 파일 삭제(아래)
 			File target = new File(uploadPath, save_file_name);
 			if(target.exists()) {
-				target.delete();//폴더에서 기존 첨부 파일 삭제
+				target.delete(); // 폴더에서 기존 첨부 파일 삭제
 			}
 			result = "success";
 		} catch (Exception e) {

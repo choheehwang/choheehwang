@@ -79,7 +79,7 @@ color:#fff;
 /* footer 영역 시작 */
 .footer {
 padding-top:30px;
-background:#454545;
+background:#fff;
 text-align:center;/* 이미지 로고일 때, 가로 가운데 정렬 사용 */ 
 }
 .footer p {
