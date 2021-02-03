@@ -104,7 +104,7 @@ jQuery(document).ready(function(){
 		<!-- 메인상단위치표시영역 -->
 		<div class="location_area customer">
 			<div class="box_inner">
-				<h2 class="tit_page">스프링 <span class="in">in</span> 자바</h2>
+				<h2 class="tit_page">아름다울 휘</h2>
 				<p class="location">MYPAGE <span class="path">/</span> 회원등록</p>
 				<ul class="page_menu clear">
 					<li><a href="#" class="on">회원등록</a></li>
@@ -149,7 +149,7 @@ jQuery(document).ready(function(){
 						<li class="clear">
 							<label for="user_pw_chk_lbl" class="tit_lbl pilsoo_item">비밀번호확인</label>
 							<div class="app_content">
-							<input type="password" name="user_pw_chk" class="w100p" id="user_pw_chk_lbl" placeholder="비밀번로를 다시 입력해주세요" required/>
+							<input type="password" name="user_pw_chk" class="w100p" id="user_pw_chk_lbl" placeholder="비밀번호를 다시 입력해주세요" required/>
 							</div>
 						</li>
 						<li class="clear">
@@ -190,7 +190,6 @@ jQuery(document).ready(function(){
 		</div>
 		<!-- //메인본문영역 -->
 	</div>
-	<!-- //메이콘텐츠영역 -->
+	<!-- //메인콘텐츠영역 -->
 	
-
 <%@ include file="./include/footer.jsp" %>

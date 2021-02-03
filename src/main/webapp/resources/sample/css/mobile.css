@@ -1,35 +1,34 @@
 @charset "UTF-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 /* 모바일용 스타일지정 시작  */
-body {/*부트스트랩css또는 reset.css에서 초기화 된것을 재 정의 할때*/
-font-size:14px;
-background:#fff;
-line-height:1.4 !important;/*상속 바로전에 적용한 값을 초기화inherit, initial 시키는 역할*/
-font-family:'Malgun Gothic', dotum, sans-serif !important;
-}/*부트스트랩css영향을 받은것을 무효화시키고, 사용자css로 적용*/
-/*부트스트랩css영향을 받는 부분을 무효화 시키기(아래)*/
-ul {
-	margin-bottom: inherit !important;/*css위치와 상관없이 무조건,중요하게 적용가능*/
-}
+body {
+	font-size:14px;/*사용자 css로 적용*/
+	background:#fff;
+	line-height:1.4 !important; /*!important 추가*/
+	font-family:'Malgun Gothic', dotum, sans-serif !important; /*글꼴고정추가*/
+	}
+	ul {
+	margin-bottom: inherit !important; /* important: css위치와 상관없이 강제로 적용시키는 것, 매우 중요한 지식 */
+	}
 /* 헤더영역 시작 */
 .header {
 height:80px;
 position:relative;/*상대적인 위치 다른예는 absolute절대적인위치=fixed붙박이*/
 padding:0px 2%;/*안쪽여백: 바깥쪽여백은 margin입니다. 18px(상하여백) 5%(좌우여백)*/
 /*padding:18px 5% 18px 5%; 시계방향으로진행 시작 위쪽부터 시작 의 약자 위로 표시됩니다.
-만약 padding:18px 5% 18px; 3가지 모두 동일. 18px(상여백) 5%(좌우여백) 18px(하여백)
-*/
+만약 padding:18px 5% 18px; 3가지 모두 동일. 18px(상여백) 5%(좌우여백) 18px(하여백)*/
 }
 .header .logo {
 float:left;/*플로트: 떠다니는 영역. 역할은 세로배치를 가로배치로 변경처리에 사용됨*/
 }
 .header .logo a {
 font-size:26px;/*글자크기*/
-color:#3f51b5;/*글자색상*/
+color:#000;/*글자색상*/
 font-weight:normal;/*글자두께*/
 text-indent:-9999%;/*들여쓰기*/
 display:block;
 height:80px;
-background:url(/resources/sample/img/ball.png) no-repeat;/*배경이미지 기본이 반복repeat*/
+background:url(/resources/sample/img/hui.png) no-repeat;/*배경이미지 기본이 반복repeat*/
 background-size:90%;
 background-position:0px center;/*배경위치는 0px(가로) center(세로)*/
 }
@@ -42,7 +41,7 @@ cursor:pointer;/*마우스커서모양을 손모양으로 변경*/
 .menu-toggle-btn span {
 display:block;height:2px;
 width:100%;/*여기서 100% .menu-toggle-btn영역의 가로20px 까지가 100%임*/
-background:#3f51b5;
+background:#000;
 margin-bottom:5px;
 }
 .header .gnb {
@@ -51,17 +50,18 @@ position:absolute;/*gnb영역의 위치를 절대위치로 지정 위치정보�
 top:80px;/*화면상단에서 얼만큼 떨어지게 배치할 건지 지정*/
 left:0px;/*화면왼쪽에서 얼만큼 떨어지게 배치할지 저정*/
 width:100%;
-background:#3f51b5;
+background:#454545;
 z-index:21;/*화면에서 콘텐츠가 겹치는경우 z인덱스*/
 }
 .header .gnb li {
 /*border는 테두리 bottom:아래,top:위,left-right:좌-우 1px(두께),solid(실선),#16진수(색상) */
-border:1px solid #303f9f;
+border:1px solid #000;
 border-bottom:0px;
 }
 /*가상선택자 : 사용*/
 .header .gnb li:last-child {
-border-bottom:1px solid #303f9f;
+/* border-bottom:1px solid #303f9f; */
+border-bottom:1px solid #000;
 }
 .header .gnb li a {
 display:block;/* 1줄 1글자라도 전체 자리를 차지하는 영역 : ()inline-block 자리를 차지하지만, 본인크기만) */
@@ -76,18 +76,20 @@ color:#fff;
 .carousel-item, .carousel-item img {height:300px;}
 /* 본분섹션 슬라이드영역 끝 */
 
-/* 푸터영역 시작 */
+/* footer 영역 시작 */
 .footer {
-padding-top:30px;/*margin-top 작동을 하지 않아서 padding-top으로 변경*/
+padding-top:30px;
+background:#fff;
+text-align:center;/* 이미지 로고일 때, 가로 가운데 정렬 사용 */ 
 }
 .footer p {
-margin: 21px 0px;
-color:#3f51b5;
-text-align:center;/*문장내용을 가로 가운데 정렬*/
+margin:21px 0px;
+color:#000;
+/* text-align:center; (문장 내용을 가운데 정렬(가로기준)) */
 }
-/* 푸터영역 끝 */
+/* footer 영역 끝 */
 
-/* we are페이지 영역 시작 */
+/* we are 페이지 시작 */
 .weare-header {
 margin-top:30px;
 text-align:center;
@@ -95,13 +97,13 @@ text-align:center;
 .section-title {
 margin-bottom:30px;
 font-size:42px;
-color:#3f51b5;
+color:#000;
 font-weight:normal;
-letter-spacing:5px;/*글자사이 간격주가*/
+letter-spacing:5px;/* 글자 사이 간격 주기 */
 }
 .weare-header p {
 color:#616161;
-line-height:1.9;/*줄간격 단위 1.9 글자크기의 1.9배수*/
+line-height:1.9;/* 줄간격 단위 1.9, 글자 크기의 1.9배수 */
 font-size:14px;
 }
 .weare-body {
@@ -109,61 +111,61 @@ margin-top:68px;
 }
 .weare-body li {
 text-align:center;
-margin-top:50px;/*게시물사이 간격 li태그 4개 사이간격주기*/
+margin-top:50px;
 }
 .weare-body li img {
-height:220px;/*이미지는 가로든 세로든 1쪽 크기를 지정하면, 비율을 유지하면서 크기가 조정됩니다.*/
+height:220px;/* 이미지는 가로든 세로든 한 쪽 크기를 지정하면 비율을 유지하면서 사이즈 줄어든다. */
 }
 .weare-body li h2 {
-margin: 20px 0px;
-font-size:30px;
+margin:20px 0px;
+font-size:26px;
 font-weight:normal;
-color:#3f51b5;
+color:#000;
 }
 .weare-body li p {font-size:14px;}
-/* we are페이지 영역 끝 */
+/* we are 페이지 끝 */
 
-/* work영역 시작 */
+/* work 영역 시작 */
 .work-section {
 text-align:center;
 margin-top:30px;
 }
 .work-section li img {width:100%;}
-.work-section li a {/*이부분이 실제 a태그 영역*/
-/*a 태그가 자리를 차지하지 않는 영역이고, block을 이용해서 자리를 차지하는 영역으로 변경(아래)*/
+.work-section li a { /*이 부분이 a 태그의 실제 요소*/
+/*a태그가 자리를 차지하지 않는 영역이고, block을 이용하여 자리를 차지하는 영역으로 변경(아래)*/
 display:block;
 width:100%;
 height:100%;
-position:relative;/*a태그에서 위치를 상대위치로 지정*/
+/*a태그에서 위치를 상대위치로 지정*/
+position:relative;
 }
-/*마우스를 롤오버했을때 나오는 배경색상 before가상요소 영역(아래)*/
+/*마우스를 롤오버(갖다대는 거)했을 때 나오는 배경색상, a 태그의 before 가상요소 영역(아래)*/
 .work-section li a::before {
 display:block;
-background:#3f51b5;
-/*이 절대값 위치는 위 a태그에서 지정한 relative상대위치에 한정해서 절대위치로 지정됨(아래)*/
+background:#000;
+/*이 절대값 위치는 위 a태그에서 지정한 relative 상대위치에 한정해서 절대위치로 지정됨(아래)*/
 position:absolute;
 width:100%;
 height:100%;
-top:0px;/*화면의 세로 위쪽으로 0px위치*/
-left:0px;/*화면가로로 0px위치*/
+top:0px;
+left:0px;
 content:"";
-opacity:0;/*투명도 0%로 지정*/
+opacity:0; 투명도 /*0%이므로 불투명*/
 }
 .work-section li a:hover::before {
 opacity:0.4;
 }
 .work-section .info {
-display:block;/*화면에서 자리를 차지하기 위해서 block을 지정합니다.*/
+display:block;/*화면에서 자리를 차지하기 위해서 block을 지정*/
 position:absolute;
-left:10px;
 color:#fff;
 text-align:left;
 opacity:0;
-transition:all 0.3s;/*화면전환 옵션 transform 모양변화에대한 화면전환옵션, width, height등등 all... */
+transition:all 0.3s;/*화면전환 옵션*/
 }
 .work-section li a:hover .info{
 opacity:1;
-transform:translateY(20px);/*모양이 변화할때 Y세로축으로 20px 이동합니다.*/
+transform:translateY(20px;) /*모양이 변화할 때 Y세로축으로 20px 이동*/
 }
 .info h2 {
 font-size:26px;
@@ -173,26 +175,25 @@ font-weight:normal;
 font-size:14px;
 padding:10px 0px;
 }
-/* work영역 끝 */
+/* work 영역 끝 */
 
-/* blog 영역 시작 */
+/*블로그 영역 시작*/
 .blog-section {
+margin-top:30px;
+}
+.blog-section li {
 margin-top:30px;
 }
 .blog-section h1 {
 text-align:center;
 font-size:42px;
-color:#3f51b5;
+color:#000;
 font-weight:normal;
 }
 .blog-section .container {
 width:90%;
-margin:0 auto;
-}
-.blog-section li {
-margin-top:30px;
-}
-/*위에서 현재 영역을 가운데정렬시 margin:0 auto; 좌우로 5%가 자동으로 잡힘*/
+/*현재 영역을 가운데 정렬할 시 사용(아래)*/
+margin:0 auto;}
 .blog-section li img {
 width:100%;
 }
@@ -200,43 +201,47 @@ width:100%;
 display:block;
 margin:10px 0px;
 font-size:12px;
-color:#888;
+color:#767676;
 }
 .blog-section li h2 {
-color:#424242;
 font-weight:normal;
-line-height:1.6;/*줄간격단위는 현재 글자크기의 배수*/
+line-height:1.6;/*줄간격 단위는 현재 글자크기의 배수*/
 }
-/* reset.css 에서 hr태그를 display:none;적용했기 때문에, 특별히 .blog영역에서만 hr 적용 */
-.blog-section hr {display:block; height:1px; background:#3f51b5;}
-/* blog 영역 끝 */
+/*reset.css에서 hr태그를 display:none;으로 적용했기 때문에 특별히 .blog 영역에서만 hr 적용*/
+.blog-section hr {
+display:block;
+height:1px;
+background:#000
+}
+/*블로그 영역 끝*/
 
-/* contact 영역 시작 */
+/* CONTACT US 영역 시작 */
 .contact-section {
 margin-top:30px;
 }
 .contact-section h1 {
-font-size:42px;
-text-align:center;
-color:#3f51b5;
+font-size:38px;
 font-weight:normal;
+text-align:center;
+color:#000;
 }
-.contact-section .container {
+.contact-section form {
 width:90%;
-margin:0 auto;/*가운데정렬 30px auto 0px; */
+margin:0px auto;
 margin-top:30px;
 }
 .contact-section label {
-display:none;/* 모바일에서는 숨기지만, 테블릿+PC용에서는 보이게 처리예정 */
+display:none;
+/*모바일에서느 숨기지만 테블릿이나 PC용에서는 보이게 해야 함*/
 }
-.contact-section form input {
+.contact-section  form input {
 width:100%;
 line-height:1.2;
-padding:0 2px;
-height:40px;
-border:none;/*테두리 삭제*/
-border-bottom:1px solid #ccc;/* 테두리 선설정:굵기,solid실선,dotted점선 ,선색상 */
-background:transparent;/*배경색상 투명처리*/
+padding:0.2px;
+height:50px;
+border:none; /*테두리 삭제*/
+border-bottom:1px solid #ccc; /*테두리선 설정: 굵기, solid실선/dotted점선, 색상*/
+background:transparent; /*배경색상 투명 처리*/
 }
 .contact-section form textarea {
 width:100%;
@@ -244,21 +249,21 @@ background:transparent;
 line-height:1.2;
 border:none;
 border-bottom:1px solid #ccc;
-min-height:100px;/*최소높이를 지정하는 이유는 내용이 없더라도, 높이를 100px로 고정하는 의미*/
+min-height:100px; /*최소 높이 설정*/
 padding-top:10px;
 padding-bottom:10px;
 }
 .contact-section form button {
-padding:15px;/*여백이 있는 버튼을 만들기*/
+padding:15px; /*여백이 있는 버튼*/
 font-size:12px;
-background:#3f51b5;
+background:#000;
 color:#fff;
 border:0px;
 }
 .submit-btn {
 margin-top:10px;
-text-align:right;/*div영역안쪽의 내용을 좌우 정렬시키는 명령*/
+text-align:right; /*div영역 안 쪽의 내용을 정렬*/
 }
-/* contact 영역 끝 */
+/* CONTACT US 영역 끝 */
 
 /* 모바일용 스타일지정 끝 */
