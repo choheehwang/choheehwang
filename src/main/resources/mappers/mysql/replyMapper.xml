@@ -7,7 +7,7 @@ select count(*) from tbl_reply where bno = #{bno}
 </select>
 
 <select id="selectReply" resultType="org.edu.vo.ReplyVO">
-select * from tbl_reply
+select * from tbl_reply 
 where bno = #{bno}
 order by rno desc
 limit #{pageVO.queryStartNo}, #{pageVO.queryPerPageNum}
@@ -19,7 +19,7 @@ where bno = #{bno}
 </update>
 
 <insert id="insertReply">
-insert into tbl_reply (bno, reply_text, replyer, reg_date)
+insert into tbl_reply (bno,reply_text,replyer,reg_date) 
 values(#{bno}, #{reply_text}, #{replyer}, now())
 </insert>
 
@@ -31,12 +31,11 @@ where rno = #{rno}
 </update>
 
 <delete id="deleteReply">
-delete from tbl_reply
+delete from tbl_reply 
 where rno = #{rno}
 </delete>
 
 <delete id="deleteReplyAll">
 delete from tbl_reply where bno = #{bno}
 </delete>
-
 </mapper>

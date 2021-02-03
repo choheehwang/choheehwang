@@ -18,7 +18,7 @@
 		<!-- 메인상단위치표시영역 -->
 		<div class="location_area customer">
 			<div class="box_inner text-left">
-				<h2 class="tit_page">아름다울 휘</h2>
+				<h2 class="tit_page">스프링 <span class="in">in</span> 자바</h2>
 				<p class="location">에러페이지 <span class="path">/</span> ${exception.getMessage()}</p>
 				<ul class="page_menu clear">
 					<li style="color:#fff">${exception.getMessage()}</li>
@@ -41,7 +41,7 @@
 		</div>
 		<!-- //메인본문영역 -->
 	</div>
-	<!-- //메인콘텐츠영역 -->
+	<!-- //메이콘텐츠영역 -->
 
 
 <%@ include file="./include/footer.jsp" %>

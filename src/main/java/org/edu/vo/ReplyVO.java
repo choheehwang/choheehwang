@@ -3,18 +3,18 @@ package org.edu.vo;
 import java.util.Date;
 
 /**
- * 댓글의 data 입출력 담당하는 data 클래스
- * @author 황초희
+ * ReplyVO클래스는 댓글 데이터 입출력을 담당하는 데이터 클래스
+ * @author 김일국
  *
  */
 public class ReplyVO {
-	// 멤버 변수 생성
-	private Integer rno; // 댓글 고유 번호
-	private Integer bno; // 부모 게시글 번호
-	private String reply_text; // 댓글 내용
-	private String replyer; // 댓글 작성자
-	private Date reg_date; // 댓글 등록일
-	private Date update_date; // 댓글 수정일
+	//멤버변수 생성(아래)
+	private Integer rno;//댓글 고유번호(자동증가AI)
+	private Integer bno;//부모게시글 번호(고유번호,외래키-참조키)
+	private String reply_text;//댓글 내용
+	private String replyer;//댓글 작성자
+	private Date reg_date;//댓글 등록일
+	private Date update_date;//댓글 수정일
 	
 	@Override
 	public String toString() {

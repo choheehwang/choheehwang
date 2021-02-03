@@ -36,27 +36,20 @@ delete from tbl_attach where save_file_name = #{save_file_name}
 <delete id="deleteAttachAll">
 delete from tbl_attach where bno = #{bno}
 </delete>
-<!-- LAST_INSERT_ID() 마리아DB에서 작동X , MySQL 전용
-<insert id="insertAttach">
-insert into tbl_attach (save_file_name, real_file_name, bno) 
-values (#{save_file_name}, #{real_file_name}, (select bno from tbl_board order by bno desc limit 1) )
-</insert>
--->
-<!-- HSQL용(헤로쿠용) limit 사용 X -->
+<!-- LAST_INSERT_ID() 마리아DB에서 작동X -->
 <insert id="insertAttach">
 insert into tbl_attach (save_file_name, real_file_name, bno, reg_date) 
-values (#{save_file_name}, #{real_file_name},
+values (#{save_file_name}, #{real_file_name}, 
+(
+	SELECT TABLE_A.BNO FROM
 	(
-		SELECT TABLE_A.BNO FROM
-		(
-		SELECT BNO FROM TBL_BOARD ORDER BY BNO DESC
-		) TABLE_A
-		WHERE ROWNUM = 1
-	),
+	SELECT BNO FROM TBL_BOARD ORDER BY BNO DESC
+	) TABLE_A
+	WHERE ROWNUM = 1
+),
 sysdate
 )
 </insert>
-
 <update id="updateBoard">
 update tbl_board set
 	board_type = #{board_type},
@@ -68,10 +61,10 @@ where bno = #{bno}
 <delete id="deleteBoard">
 delete from tbl_board where bno = #{bno}
 </delete>
-<!-- 게시물등록시 bno가 자동증가가 안 되기 때문에 시퀸스를 사용한 값을 insert 쿼리 실행 전에 키값(PK) 지정 후 사용 -->
+<!-- 게시물등록시 bno가 자동증가가 않되기 때문에 시퀸스를 사용한 값을 insert쿼리실행전에 PK값을 지정 후 사용합니다. -->
 <insert id="insertBoard">
 	<selectKey keyProperty="bno" resultType="int" order="BEFORE">
-		SELECT SEQ_BNO.nextval FROM DUAL
+	SELECT SEQ_BNO.nextval FROM DUAL
 	</selectKey>
 insert into tbl_board (bno,board_type,title,content,writer,reg_date) 
 values(#{bno},#{board_type},#{title},#{content},#{writer},sysdate)
@@ -102,7 +95,7 @@ SELECT TABLE_B.* FROM
     (
     SELECT * FROM TBL_BOARD 
     <include refid="sqlWhere"></include>
-    <![CDATA[
+<![CDATA[
     order by reg_date desc
     ) TABLE_A
     WHERE ROWNUM <= (#{queryStartNo}/#{queryPerPageNum}+1)*#{queryPerPageNum}

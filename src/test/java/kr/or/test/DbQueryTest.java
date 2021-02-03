@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class DbQueryTest {
 
 	public static void main(String[] args) {
-
+		
 		Connection connection = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -34,20 +34,20 @@ public class DbQueryTest {
 				System.out.print(rs.getString("writer"));
 				System.out.println();
 			}
-
+			
 		} catch (SQLException e) {
-
+			
 		} finally {
 				try {
 					if(rs !=null)rs.close();
 					if(stmt !=null)stmt.close();
 					if(connection !=null)connection.close();
 				} catch (SQLException e) {
-
+					
 				}
-
+			
 		}
-
+		
 
 	}
 

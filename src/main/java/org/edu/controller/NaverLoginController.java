@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.edu.util.NaverLoginApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 
@@ -34,9 +35,9 @@ public class NaverLoginController {
 	private String CLIENT_SECRET;
 	@Value("${SnsCallbackUri}")
 	private String REDIRECT_URI; 
-	// private final static String CLIENT_ID = "";
-	// private final static String CLIENT_SECRET = "-";
-	// private final static String REDIRECT_URI = "";
+	//private final static String CLIENT_ID = "";
+	//private final static String CLIENT_SECRET = "-";
+	//private final static String REDIRECT_URI = "";
 	private final static String SESSION_STATE = "oauth_state";
 	/* 프로필 조회 API URL - 사용자이름+사용자이메일 */
 	private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";

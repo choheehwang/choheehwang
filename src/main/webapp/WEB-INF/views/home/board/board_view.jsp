@@ -76,7 +76,7 @@
 	          <form action="#" name="reply_form" method="post">
 	          <div class="card-body">
 	          	<div class="form-group">
-                   <label for="writer">Writer</label>
+                   <label for="replyer">Writer</label>
                    <input value="${session_username}" type="text" class="form-control" name="replyer" id="replyer" placeholder="작성자를 입력해 주세요." required>
                    <!-- 폼에서 input같은 입력태그에는 name속성이 반드시 필요, 이유는 DB에 입력할때,
                    	 값을 전송하게 되는데, 전송값을 담아두는 이름이 name가 되고, 위에서는 writer 입니다. -->
@@ -138,10 +138,10 @@ jstl을 사용하려면, jsp에서 @taglib uri=... 처럼 외부 core를 가져�
 <!-- 화면을 재구현Representation하는 함수(아래) -->
 <script>
 var printReplyList = function(data, target, templateObject) {
-	var template = Handlebars.compile(templateObject.html()); // html태그로 변환
-	var html = template(data); // 빅데이터를 리스트템플릿에 바인딩 결합시켜주는 역할. 변수html에 저장되었음.
-	$(".template-div").remove(); // 화면에 보이는 댓글리스트만 지우기.
-	target.prepend(html); // target은 .time-label 클래스영역을 가리킵니다.
+	var template = Handlebars.compile(templateObject.html());//html태그로 변환
+	var html = template(data);//빅데이터를 리스트템플릿에 바인딩 결합시켜주는 역할. 변수html에 저장되었음.
+	$(".template-div").remove();//화면에 보이는 댓글리스트만 지우기.
+	target.prepend(html);//target은 .time-label 클래스영역을 가리킵니다.
 };
 </script>
 <!-- 댓글 페이징 재구현Representation하는 함수(아래) -->
@@ -163,10 +163,10 @@ var printPageVO = function(pageVO, target) {
 <!-- 댓글 리스트 실행 하는 함수(아래) -->
 <script>
 var replyList = function(){
-	var page = $("#reply_page").val(); // 현재 지정된 댓글 페이지 값 가져오기 get
+	var page = $("#reply_page").val();//현재 지정된 댓글 페이지 값 가져오기Get
 	$.ajax({
-		url:"/reply/reply_list/${boardVO.bno}/"+page, // 쿼리스트링X, 패스베리어블로 보냅니다.
-		type:"post", // 원래는 get인데, post로 보낼 수 있음.
+		url:"/reply/reply_list/${boardVO.bno}/"+page,//쿼리스트링X, 패스베리어블로 보냅니다.
+		type:"post",//원래는 get인데, post로 보낼수 있음.
 		dataType:"json",
 		success:function(result){
 			if(result=="undefined" || result=="" || result==null){
@@ -174,7 +174,7 @@ var replyList = function(){
 				$("#div_reply").html('<div class="pagination justify-content-center"><ul class="pagination pageVO"></ul></div>');
 				alert("조회된 값이 없습니다.");
 			}else{
-				printReplyList(result.replyList, $("#div_reply"),$("#template")); // 댓글리스트출력
+				printReplyList(result.replyList, $("#div_reply"),$("#template"));//댓글리스트출력
 				printPageVO(result.pageVO, $(".pageVO"));
 			}
 		},
@@ -188,10 +188,10 @@ var replyList = function(){
 <script>
 $(document).ready(function(){
 	$(".pageVO").on("click","li a",function(event){
-		event.preventDefault(); // 디폴트 액션 링크이동 방지
-		var page = $(this).attr("href"); // GET
-		$("#reply_page").val(page); // SET, 매개변수가 없으면  GET $("#reply_page").val()
-		// alert("디버그" + page);
+		event.preventDefault();//디폴트 액션 링크이동 방지
+		var page = $(this).attr("href");//겟GET
+		$("#reply_page").val(page);//셋SET 매개변수가 없으면 겟 GET $("#reply_page").val()
+		//alert("디버그" + page);
 		replyList();
 	});
 });
@@ -200,55 +200,22 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
 	$("#btn_reply_list").on("click", function(){
-		// alert("디버그");
-		replyList(); // 댓글 리스트 함수호출
+		//alert("디버그");
+		replyList();//댓글 리스트 함수호출
 	});
 });
 </script>
-<!-- 댓글 삭제 버튼 액션 처리(아래) -->
-<script>
-$(document).ready(function() {
-	$("#deleteReplyBtn").on("click", function() {
-		if("${session_enabled}" == "") {
-			alert("로그인이 필요합니다.");
-			location.href = "/login";
-			return false;
-		}
-		var rno = $("#rno").val();
-		$.ajax({
-			type:"delete",
-			url:"/reply/reply_delete/${boardVO.bno}/"+rno,
-			dataType:"text",
-			success:function(result) {
-				if(result == "success") {
-					alert("해당 댓글이 삭제되었습니다.");
-					var reply_count = $("#reply_count").text(); // get
-					$("#reply_count").text(parseInt(reply_count)+1); // set
-					replyList(); // 삭제 후 댓글 리스트 재실행
-					$("#replyModal").modal("hide"); // Modal창 닫는 JQuery 내장 함수
-				}else{
-					alert("해당 댓글 삭제에 실패하였습니다.");
-				}
-			},
-			error:function(result) {
-				alert("RestAPI 서버 오류 발생");
-			}
-		});
-	});
-});
-</script>
-
 <!-- 댓글 수정 버튼 액션 처리(아래) -->
 <script>
-$(document).ready(function() {
-	$("#updateReplyBtn").on("click", function() {
+$(document).ready(function(){
+	$("#updateReplyBtn").on("click",function(){
 		if("${session_enabled}" == "") {
-			alert("로그인이 필요합니다.");
+			alert("회원만 댓글 수정이 가능합니다.");
 			location.href = "/login";
 			return false;
 		}
-		var reply_text = $("#replytext").val(); // get
-		var rno = $("#rno").val(); // get
+		var reply_text = $("#replytext").val();//겟Get
+		var rno = $("#rno").val();//겟Get
 		$.ajax({
 			type:"patch",
 			url:"/reply/reply_update",
@@ -257,71 +224,103 @@ $(document).ready(function() {
 				"X-HTTP-Method-Override":"PATCH"
 			},
 			data:JSON.stringify({
-					rno:rno,
-					reply_text:reply_text
-				}),
-				dataType:"text",
-				success:function(result) {
-					if(result == "success") {
-						alert("해당 댓글이 수정되었습니다.");
-						$("#replyModal").modal("hide");
-						replyList();
-					}else{
-						alert("해당 댓글 수정에 실패하였습니다.");
-					}
-				},
-				error:function(result) {
-					alert("RestAPI 서버 오류 발생");
+				rno:rno,
+				reply_text:reply_text
+			}),
+			dataType:"text",
+			success:function(result){
+				if(result=="success"){
+					alert("댓글 수정 성공!");
+					$("#replyModal").modal("hide");
+					replyList();//수정 후 댓글리스트 재 호출(실행)
+				}else{
+					alert("댓글 수정 실패!");
+				}
+			},
+			error:function(result){
+				alert("RestAPI서버가 작동하지 않습니다.");
 			}
 		});
 	});
 });
 </script>
-
+<!-- 댓글 삭제 버튼 액션 처리(아래) -->
+<script>
+$(document).ready(function(){
+	$("#deleteReplyBtn").on("click",function(){
+		if("${session_enabled}" == "") {
+			alert("회원만 댓글 삭제가 가능합니다.");
+			location.href = "/login";
+			return false;
+		}
+		var rno = $("#rno").val();
+		$.ajax({
+			type:"delete",
+			url:"/reply/reply_delete/${boardVO.bno}/"+rno,
+			dataType:"text",
+			success:function(result){
+				if(result=="success") {
+					alert("댓글삭제 성공!");
+					var reply_count = $("#reply_count").text();//겟Get
+					$("#reply_count").text(parseInt(reply_count)-1);//셋Set
+					replyList();//삭제후 댓글 리스트 재실행.
+					$("#replyModal").modal("hide");//모달창을 닫는 JQuery내장함수
+				}else{
+					alert("댓글삭제 실패!");
+				}
+			},
+			error:function(result){
+				alert("RestAPI서버가 작동하지 않습니다.");
+			}
+		});
+	});
+});
+</script>
 <!-- 댓글 등록 버튼 액션 처리(아래) -->
 <script>
 $(document).ready(function() {
-	$("#insertReplyBtn").on("click", function() { // 댓글등록버튼을 클릭했을 때 구현내용(아래)
-	if("${session_enabled}" == "") { // 로그인 한 회원만 댓글 등록
-		alert("로그인이 필요합니다.");
-	location.href = "/login";
-	return false;
-	}
-	// alert("디버그");
-		// Ajax를 이용해서, 화면을 Representation (REST-API방식) 부분 화면을 재구현(아래)
-		var bno = "${boardVO.bno}";
-		var reply_text = $("#reply_text").val(); // input type은 val() 함수로 입력값 가져올 수 있음
-		var replyer = $("#replyer").val();
-		if(reply_text == "" || replyer == "") {
-			alert("작성자 및 내용을 입력해주세요.");
+	$("#insertReplyBtn").on("click", function() {//댓글등록버튼을 클릭했을 때 구현내용(아래)
+		if("${session_enabled}" == "") {//버튼클릭시 비로그인시 로그인 화면으로 유도
+			alert("회원만 댓글 등록이 가능합니다.");
+			location.href = "/login";//자바스크립트 내장기능(href:hyterTextReference:URL이동)
 			return false;
 		}
-		$.ajax({ // 통신프로그램: J쿼리에서 내장된 함수ajax({}); 비동기통신특징(HTTP동기통신-웹페이지의 단점을 해소 Ajax)
-			// 최초로 상용화 적용되었던 곳이 파일 업로드/다운로드에 Ajax기능의 적용되었습니다.
-			// 서버(RestAPI서버=컨트롤러)-클라이언트(PC브라우저ajax=jsp단-화면)
-			// 여기서부터 프론트 엔드 개발자 영역
-			type:'post', // 지금은 html이라서 get방식이지만, jsp로가면, post방식으로 바꿔야 합니다.
-			url:'/reply/reply_write', // jsp로 가면, ReplyController 에서 지정한 url로 바꿔야 합니다.
+		//alert("디버그");
+		//Ajax를 이용해서, 화면을 Representation (REST-API방식) 부분 화면을 재구현(아래)
+		var bno = "${boardVO.bno}";
+		var reply_text = $("#reply_text").val();//input type은 val()함수로 입력값을 가져올 수 있음.
+		var replyer = $("#replyer").val();
+		if(reply_text=="" || replyer=="") {
+			alert("댓글 내용, 작성자는 필수 입력 사항 입니다.");
+			return false;
+		}
+		$.ajax({//통신프로그램: J쿼리에서 내장된 함수ajax({}); 비동기통신특징(HTTP동기통신-웹페이지의 단점을 해소 Ajax)
+		//최초로 상용화 적용되었던 곳이 파일 업로드/다운로드에 Ajax기능의 적용되었습니다.
+		//서버(RestAPI서버=컨트롤러)-클라이언트(PC브라우저ajax=jsp단-화면)
+			//여기서부터는 프론트 엔드 개발자 영역
+			type:'post',//지금은 html이라서 get방식이지만, jsp로가면, post방식으로 바꿔야 합니다.
+			url:'/reply/reply_write',//jsp로 가면, ReplyController 에서 지정한 url로 바꿔야 합니다.
 			headers:{
 				"Content-Type":"application/json",
 				"X-HTTP-Method-Override":"POST"
 			},
 			data:JSON.stringify({
-				bno: bno,
-				reply_text: reply_text,
-				replyer: replyer
-			}), // RestAPI서버컨트롤러로 보내는 Json값
-			success:function(result) { // 응답이 성공하면(상태값200)위경로에서 반환받은 result(json데이터)를 이용해서 화면을 재구현
-				var reply_count = $("#reply_count").text(); // get
-				$("#reply_count").text(parseInt(reply_count)+1); // set
-				// 다른 페이지에서  댓글 입력 시 1 페이지로 가도록 유도(아래)
-				$("#reply_page").val("1"); // 1 페이지 값으로 set
-				replyList(); // 
-				$("#replyer").val(""); // input 박스 값 제거 
+				bno:bno,
+				reply_text:reply_text,
+				replyer:replyer
+			}),//RestAPI서버컨트롤러로 보내는 Json값
+			success:function(result) {//응답이 성공하면(상태값200)위경로에서 반환받은 result(json데이터)를 이용해서 화면을 재구현
+				var reply_count = $("#reply_count").text();//겟Get
+				if(reply_count == ""){reply_count=0;}//DB 초기값이 null일때 체크
+				$("#reply_count").text(parseInt(reply_count)+1);//셋Set
+				//댓글 3페이지를 보고 있다가, 댓글 입력했어요, 본인 작성할 댓글 바로 확인 가능하도록 1page로 가도록 유도
+				$("#reply_page").val("1");//그래서 1페이지값으로 Set
+				replyList();//댓글입력 후 리스트 출력함수 호출(실행)
+				$("#replyer").val("");//input박스의 값 제거 
 				$("#reply_text").val("");
 			},
 			error:function(result) {
-				alert("RestAPI 서버 오류 발생");
+				alert("RestAPI서버가 작동하지 않습니다.");
 			}
 		});
 	} );
@@ -363,7 +362,6 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
-	
 <form name="action_form">
 <input type="hidden" name="bno" value="${boardVO.bno}">
 <input type="hidden" name="page" value="${pageVO.page}">

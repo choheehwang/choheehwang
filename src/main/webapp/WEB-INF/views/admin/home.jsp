@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ include file="./include/header.jsp" %>
 
-<!-- 관리자단 본문 시작 -->
-  <!-- 대쉬보드 본문 Content Wrapper. Contains page content -->
+  <!-- 대시보드 본문 Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- 본문 헤더 Content Header (Page header) -->
+    <!-- 본문헤더 Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -23,15 +23,14 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- 본문 내용 Main content -->
+    <!-- 본문내용 Main content -->
     <section class="content">
       <div class="container-fluid">
-      
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- 관리자단 본문 끝 -->
-
+  
 <%@ include file="./include/footer.jsp" %>

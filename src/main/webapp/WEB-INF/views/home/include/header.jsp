@@ -6,11 +6,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title> 아름다울 휘 </title>
+<title> 스프링 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="stylesheet" href="/resources/home/css/reset.css">
+<link rel="stylesheet" href="/resources/home/css/reset.css"><!-- 상대경로 절대경로로 변경 /로시작 -->
 <link rel="stylesheet" href="/resources/home/css/main.css">
 <link rel="stylesheet" href="/resources/home/css/tablet.css">
 <link rel="stylesheet" href="/resources/home/css/pc.css">
@@ -37,7 +37,7 @@ if('${msg}' != '') {//자바의 EL표기법 = 달라{변수명}
 	<header id="header">
 		<div class="header_area box_inner clear">
 			<!-- 상단로고영역 -->
-			<h1><a href="/">아름다울 휘</a></h1>
+			<h1><a href="/">스프링 in 자바</a></h1>
 			<!-- //상단로고영역 -->
 			
 			<!-- 상단메뉴메뉴영역 -->
@@ -47,13 +47,13 @@ if('${msg}' != '') {//자바의 EL표기법 = 달라{변수명}
 				<c:choose>
 					<c:when test="${session_enabled eq 'true'}">
 						<!-- 로그인 후 보이는 메뉴(아래) -->
-						<li><a href="#">${session_username} 님 환영합니다</a></li>
+						<li><a href="#">${session_username} 님 환영합니다.</a></li>
 						<c:if test="${session_type eq 'normal'}">
 							<li><a href="/member/mypage">마이페이지</a></li>
 						</c:if>
 						<li><a href="/logout">로그아웃</a>
 						<c:if test="${session_levels eq 'ROLE_ADMIN'}">
-						<li><a href="/admin">AdminLTE</a></li>
+							<li><a href="/admin">AdminLTE</a></li>
 						</c:if>
 					</c:when>
 					<c:otherwise>
@@ -68,7 +68,7 @@ if('${msg}' != '') {//자바의 EL표기법 = 달라{변수명}
 
                         <div class="gnb_depth gnb_depth2_1">
                             <ul class="submenu_list">
-                                <li><a href="/sample">반응형 홈페이지</a></li>
+                                <li><a href="/sample">반응형홈페이지</a></li>
                             </ul>
                         </div>
 					</li>
@@ -82,8 +82,8 @@ if('${msg}' != '') {//자바의 EL표기법 = 달라{변수명}
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
                             <c:forEach items="${board_type_list}" var="boardTypeVO">
-                        	<li><a href="/home/board/board_list?board_type=${boardTypeVO.board_type}">${boardTypeVO.board_name}</a></li>
-                      		</c:forEach>
+                            	<li><a href="/home/board/board_list?board_type=${boardTypeVO.board_type}">${boardTypeVO.board_name}</a></li>
+                            </c:forEach>
                             </ul>
                         </div>
 					</li>

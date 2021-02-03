@@ -10,12 +10,12 @@ import org.edu.vo.PageVO;
 public interface IF_BoardDAO {
 	public List<BoardVO> selectBoard(PageVO pageVO) throws Exception;
 	public int countBoard(PageVO pageVO) throws Exception;
-	// 게시물 상세 조회 시작
+	// 게시물 상세조회 시작
 	public BoardVO readBoard(Integer bno) throws Exception;
 	public List<AttachVO> readAttach(Integer bno) throws Exception;
 	public List<HashMap<String, Object>> readAttach_noUse(Integer bno) throws Exception;
 	public void updateViewCount(Integer bno) throws Exception;
-	// 게시물 상세 조회 끝
+	// 게시물 상세조회 끝
 	public void insertBoard(BoardVO boardVO) throws Exception;
 	public void deleteBoard(Integer bno) throws Exception;
 	public void updateBoard(BoardVO boardVO) throws Exception;

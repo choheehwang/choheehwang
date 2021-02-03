@@ -14,7 +14,7 @@
 	    padding-left: 14px;
 	    overflow: hidden;
 	    text-overflow: ellipsis;
-	    white-space: nowrap; /* 줄바꿈 할 때, 공백는 포함 안 시키는 의미 */
+	    white-space: nowrap;/* 줄바꿈할때, 공백는 포함 않시키는 의미 */
     }
 </style>
 <script>
@@ -37,21 +37,21 @@ $(document).ready(function(){
                     <li class="imglist0">
                         <div class="roll_content">
                             <a href="javascript:;">
-							<p class="roll_txtline">안녕하세요, 아름다울 휘입니다.</p>
+							<p class="roll_txtline">OOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
 							</a>
                         </div>
                     </li>
                     <li class="imglist1">
                         <div class="roll_content">
                             <a href="javascript:;">
-							<p class="roll_txtline">오늘, 당신의 식탁은 안전했나요?</p>
+							<p class="roll_txtline">OOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
 							</a>
                         </div>
                     </li>
                     <li class="imglist2">
                         <div class="roll_content">
                             <a href="javascript:;">
-							<p class="roll_txtline">진정한 이너뷰티의 시작, 아름다울 휘에서 시작하세요!</p>
+							<p class="roll_txtline">OOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
 							</a>
                         </div>
                     </li>
@@ -74,7 +74,7 @@ $(document).ready(function(){
         
 		<!-- 갤러리최근게시물영역 -->
 		<div class="about_area">
-			<h2>갤러리 최근 게시물 <b>TOP 3</b></h2>
+			<h2>겔러리 최근 게시물 <b>TOP 3</b></h2>
 			<div class="about_box">
 				<ul class="place_list box_inner clear">
 				<c:forEach var="boardVO" items="${board_list}" varStatus="status">
@@ -126,6 +126,6 @@ $(document).ready(function(){
 		</div>
 		<!-- //카카오톡상담및최근공지사항영역 -->
 	</div>
-	<!-- //메인콘텐츠영역 -->
+	<!-- //메이콘텐츠영역 -->
 
 <%@ include file="include/footer.jsp" %>

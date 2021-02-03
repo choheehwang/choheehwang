@@ -46,7 +46,7 @@
 						<li class="clear">
 		                    <label for="file_lbl" class="tit_lbl">첨부파일</label>
 		                    <c:forEach begin="0" end="1" var="index">
-			                    <div class="custom-file" style="width:96%;margin:0 2%;">
+		                    	<div class="custom-file" style="width:96%;margin:0 2%;">
 				                    <input type="file" name="file" class="custom-file-input" id="customFile_${index}">
 				                    <label class="custom-file-label" for="customFile" style="color:#999;">파일첨부${index}</label>
 				                </div>
@@ -58,7 +58,7 @@
 					<p class="btn_line">
 					<button type="submit" class="btn_baseColor">등록</button>
 					<a href="/home/board/board_list" class="btn_baseColor">목록</a>
-					</p>
+					</p>	
 				</fieldset>
 			</form>
 			<!-- //폼영역 -->
@@ -66,7 +66,7 @@
 		<!-- //메인본문영역 -->
 	</div>
 	<!-- //메이콘텐츠영역 -->
-
+	
 	<!-- 첨부파일 부트스트랩 디자인 JS -->
 	<script src="/resources/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 	<!-- 첨부파일 선택한 내용 출력 실행 -->
@@ -97,5 +97,5 @@
 		});
 	});//textarea 중 content아이디영역을 섬머노트에디터로 변경처리 함수실행
 	</script>
-
+	
 <%@ include file="../include/footer.jsp" %>

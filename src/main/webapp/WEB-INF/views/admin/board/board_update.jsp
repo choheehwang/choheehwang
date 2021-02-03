@@ -95,8 +95,9 @@
           
           <!-- 버튼영역 시작 -->
             <div class="card-body">
-            	<a href="/admin/board/board_view?page=${pageVO.page}&bno=${boardVO.bno}" class="btn btn-primary float-right mr-1">Board View</a>
-              	<button type="submit" class="btn btn-danger float-right mr-1">SUBMIT</button>
+            	<a href="/admin/board/board_view?page=${pageVO.page}&bno=${boardVO.bno}" class="btn btn-primary float-right mr-1">뷰화면이동</a>
+              	<button type="submit" class="btn btn-danger float-right mr-1">SUBMIT</button>              	
+              	<!-- a태그는 링크이동은 되지만, post값을 전송하지는 못합니다. 그래서, button태그를 사용. -->
             </div>
           <!-- 버튼영역 끝 -->
           <input type="hidden" name="bno" value="${boardVO.bno}">

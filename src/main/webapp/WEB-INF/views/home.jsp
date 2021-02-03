@@ -4,17 +4,16 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
-	<title>HI, STRANGER</title>
+	<title>스프링</title>
 </head>
 <body>
 <h1>
-	Hello! We always welcome you.
+	Hello world! 김일국 입니다. 
 </h1>
-<P>
-<c:out value="현재 한국 서버의 시간은 ${TomcatserverTime} 입니다."></c:out>
-</P>
-<P> 현재 한국 서버의 시간은 ${TomcatserverTime} 입니다.
-<script>alert('안녕하세요');</script>
-</P>
+<p> <c:out value="${TomcatserverTime}"></c:out>
+<!-- c:out 태그를 사용하는 이유는 해킹 방지용으로 필요합니다. 시큐어코딩(보안코딩) -->
+</p>
+<P>  게시판글을 불러온다고 예상하면: 현재 서버의 시간은 ${TomcatserverTime}
+ 입니다.. </P>
 </body>
 </html>

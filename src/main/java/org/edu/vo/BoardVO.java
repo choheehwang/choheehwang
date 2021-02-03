@@ -4,13 +4,13 @@ import java.util.Date;
 
 /**
  * 게시판에서 사용되는 데이터 입출력 클래스
- * @author 황초희
+ * @author 김일국
  *
  */
 public class BoardVO {
 	//멤버변수 선언
-	private Integer bno; // int는 입력값이 null일때 에러나기  때문에, Interger로 변경
-	private String board_type; // 게시판 종류:게시판ID
+	private Integer bno;//int은 입력값이 null일때 에러나기  때문에, Interger로 변경
+	private String board_type;//게시판 종류:게시판ID
 	private String title;
 	private String content;
 	private String writer;
@@ -20,13 +20,14 @@ public class BoardVO {
 	private Integer reply_count;
 	
 	public String getBoard_type() {
+		//this.board_type = "notice";//세션으로 저장된 값을 사용예정.
 		return board_type;
 	}
 	public void setBoard_type(String board_type) {
 		this.board_type = board_type;
 	}
-	private String[] save_file_names; // 폴더에 저장되는 실제파일명을 배열형으로 변경할때 사용한 변수.
-	private String[] real_file_names; // DB에 저장되는 한글파일명을 배열형으로 변경할때 사용한 변수.
+	private String[] save_file_names;//폴더에 저장되는 실제파일명을 배열형으로 변경할때 사용한 변수.
+	private String[] real_file_names;//DB에 저장되는 한글파일명을 배열형으로 변경할때 사용한 변수.
 	
 	@Override
 	public String toString() {

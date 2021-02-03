@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/resources/home/css/board.css">
 <script>
 $(document).ready(function() {
-	//라이브러리 사용 안 하고, 오리지널 j쿼리로 만드는 유효성(아래)
+	//라이브러리 사용않하고, 오리지널 j쿼리로 만드는 유효성(아래)
 	/*
 	$("#search_form").submit(function(){ //검색버튼을 클릭=전송했을때.
 		var search_keyword = $("input[name=search_keyword]").val();
@@ -35,7 +35,7 @@ $(document).ready(function() {
 				</fieldset>
 			</form>
 			<!-- //검색폼영역 -->
-
+			
 			<!-- 게시물리스트영역 -->
 			<table class="bbsListTbl" summary="번호,제목,조회수,작성일 등을 제공하는 표">
 				<caption class="hdd">공지사항  목록</caption>
@@ -64,10 +64,11 @@ $(document).ready(function() {
 							</td>
 						</tr>
 					</c:forEach>
+										
 				</tbody>
 			</table>
 			<!-- //게시물리스트영역 -->
-
+			
 			<!-- 페이징처리영역 -->
 			<div class="pagination">
 				<c:if test="${pageVO.prev}">
