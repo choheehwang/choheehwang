@@ -2,7 +2,6 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -32,8 +31,8 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-<!--  ...한글처리를 위한 UTF-8 필터 추가 -->
+	
+	<!-- 필터는 HTTP통신하는 자료를 걸러주는 역할 한글처리를 위한 UTF-8 필터 추가 -->
 	<filter>
 	  <filter-name>encoding</filter-name>
 	  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -46,8 +45,8 @@
 	  <filter-name>encoding</filter-name>
 	  <url-pattern>/*</url-pattern>
 	</filter-mapping>
-
-<!--  Ajax사용시 브라우저가 POST, GET만 지원할때, PUT,PATCH,DELETE확장 필터 추가 -->
+	
+	<!--  Ajax사용시 브라우저가 POST, GET만 지원할때, PUT,PATCH,DELETE확장 필터 추가 -->
 	<filter>
 	    <filter-name>hiddenHttpMethodFilter</filter-name>
 	    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
@@ -72,5 +71,10 @@
           <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
+	
+	<!-- 로그인 세션 유지 시간(단위:분) 타임아웃시간이 지나면, 자동로그아웃됨 -->
+	<session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+    
 </web-app>
