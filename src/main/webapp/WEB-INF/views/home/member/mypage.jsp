@@ -20,7 +20,7 @@
 	padding-left: 5px;
     padding-top: 5px;
 }
-/*
+/* 회원탈퇴여부
 .radio_area input[type="radio"] {display:none;}
 .radio_area label {display: none;}
 */
@@ -47,12 +47,11 @@ $(document).ready(function() {
 	});
 });
 </script>
-
 <script>
 //회원탈퇴 처리 코딩(아래)
 $(document).ready(function(){
 	$("#btn_member_disabled").on("click",function(){
-		if(confirm("정말로 탈퇴 하시겠습니까? 탈퇴 시 로그인이 불가합니다.")){
+		if(confirm("정말로 탈퇴 하시겠습니까? 탈퇴 후 다음부터 로그인이 않됩니다.")){
 			$("form[name='mypage_form']").attr("action","/member/member_disabled");
 			$("input[name='enabled']").val('0');//enabled값이 0(false)셋 로그인 거부처리
 			$("form[name='mypage_form']").submit();
@@ -66,7 +65,7 @@ $(document).ready(function(){
 		<!-- 메인상단위치표시영역 -->
 		<div class="location_area customer">
 			<div class="box_inner">
-				<h2 class="tit_page">아름다울 휘</h2>
+				<h2 class="tit_page">스프링 <span class="in">in</span> 자바</h2>
 				<p class="location">MYPAGE <span class="path">/</span> 개인정보수정</p>
 				<ul class="page_menu clear">
 					<li><a href="#" class="on">개인정보수정</a></li>
@@ -87,30 +86,39 @@ $(document).ready(function(){
 						<li class="clear">
 							<label for="user_id_lbl" class="tit_lbl pilsoo_item">아이디</label>
 							<div class="app_content">
-							<input value="${memberVO.user_id}" readonly type="text" name="user_id"" class="w100p" id="user_id_lbl" placeholder="아이디를 입력해주세요" required/></div>
+							<input value="${memberVO.user_id}" readonly type="text" name="user_id"" class="w100p" id="user_id_lbl" placeholder="아이디를 입력해주세요" required/>
+							</div>
 						</li>
 						<li class="clear">
 							<label for="user_name_lbl" class="tit_lbl pilsoo_item">사용자명</label>
 							<div class="app_content">
-							<input value="${memberVO.user_name}" type="text" name="user_name" class="w100p" id="user_name_lbl" placeholder="이름을 입력해주세요" required/></div>
+							<input value="${memberVO.user_name}" type="text" name="user_name" class="w100p" id="user_name_lbl" placeholder="이름을 입력해주세요" required/>
+							</div>
 						</li>
 						<li class="clear">
 							<label for="email_lbl" class="tit_lbl pilsoo_item">이메일</label>
 							<div class="app_content">
-							<input value="${memberVO.email}" type="email" name="email" class="w100p" id="email_lbl" placeholder="이메일을 입력해주세요" required/></div>
+							<input value="${memberVO.email}" type="email" name="email"" class="w100p" id="email_lbl" placeholder="이메일을 입력해주세요" required/>
+							</div>
 						</li>
+						
 						<li class="clear">
 							<label for="user_pw_lbl" class="tit_lbl pilsoo_item">비밀번호</label>
-							<div class="app_content"><input type="user_pw" name="user_pwd" class="w100p" id="user_pw_lbl" placeholder="비밀번호를 입력해주세요" /></div>
+							<div class="app_content">
+							<input type="password" name="user_pw" class="w100p" id="user_pw_lbl" placeholder="비밀번호를 입력해주세요" />
+							</div>
 						</li>
 						<li class="clear">
 							<label for="user_pw_chk_lbl" class="tit_lbl pilsoo_item">비밀번호확인</label>
-							<div class="app_content"><input type="user_pw_chk" name="user_pw_chk" class="w100p" id="user_pw_chk_lbl" placeholder="비밀번호를 다시 입력해주세요" /></div>
+							<div class="app_content">
+							<input type="password" name="user_pw_chk" class="w100p" id="user_pw_chk_lbl" placeholder="비밀번호를 다시 입력해주세요" />
+							</div>
 						</li>
 						<li class="clear">
 							<label for="point_lbl" class="tit_lbl pilsoo_item">포인트</label>
 							<div class="app_content">
-							<input value="${memberVO.point}" type="digits"" name="point" class="w100p" id="point_lbl" placeholder="숫자만 입력해주세요" required/></div>
+							<input value="${memberVO.point}" type="digits" name="point" class="w100p" id="point_lbl" placeholder="숫자만 입력해주세요" required/>
+							</div>
 						</li>
 						<li class="clear">
 							<label for="enabled_lbl" class="tit_lbl pilsoo_item">회원권한</label>
@@ -125,16 +133,16 @@ $(document).ready(function(){
 						<li class="clear">
 							<label for="enabled_lbl" class="tit_lbl pilsoo_item">탈퇴여부</label>
 							<div class="app_content radio_area">
-								<input <c:out value="${(memberVO.enabled eq 'true')?'checked':''}" /> disabled type="radio" readonly name="" class="css-radio" id="enabled_lbl" />
-								<label for="enable_lbl">회원 사용</label>
-								<input <c:out value="${(memberVO.enabled eq 'false')?'checked':''}" /> disabled type="radio" readonly name="" class="css-radio" id="disabled_lbl" />
-								<label for="disabled_lbl">회원 탈퇴</label>
+								<input <c:out value="${(memberVO.enabled eq 'true')?'checked':''}" /> disabled type="radio" name="" class="css-radio" id="enabled_lbl" />
+								<label for="enabled_lbl">회원사용</label>
+								<input <c:out value="${(memberVO.enabled eq 'false')?'checked':''}" /> disabled type="radio" name="" class="css-radio" id="disabled_lbl" />
+								<label for="disabled_lbl">회원탈퇴</label>
 								<input type="hidden" name="enabled" value="${memberVO.enabled}" readonly>
 							</div>
 						</li>
 						<li class="clear">
 							<label for="agree_lbl" class="tit_lbl pilsoo_item">개인정보활용동의</label>
-							<div class="app_content checkbox_area"><input disabled type="checkbox"" name="agree" class="css-checkbox" id="agree_lbl" required checked />
+							<div class="app_content checkbox_area"><input disabled type="checkbox"" name="agree" class="css-checkbox" id="agree_lbl" required checked/>
 							<label for="agree_lbl" class="agree">동의함</label>
 							</div>
 						</li>
@@ -150,7 +158,5 @@ $(document).ready(function(){
 		<!-- //메인본문영역 -->
 	</div>
 	<!-- //메인콘텐츠영역 -->
-
-
-
+	
 <%@ include file="../include/footer.jsp" %>
