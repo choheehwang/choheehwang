@@ -1,5 +1,7 @@
 package kr.or.mentoring;
 
+import org.hsqldb.persist.IntArrayCachedObject;
+
 public class ArrayCreateTest {
 
 	public static void main(String[] args) {
@@ -7,9 +9,9 @@ public class ArrayCreateTest {
 		// 1~5까지 차례대로 대입(for문으로 대입)
 		// Result: "5 4 3 2 1"
 		int[] intArray = new int[5];
-		int num = 5;
+		int num = 1;
 		// 입력부
-		for(int i=intArray.length-1; i>=0; i--) {
+		for(int i=intArray.length-1; i>=0; i--) { // i=index number이므로 i는 0부터 시작
 			intArray[i] = num++;
 		}
 		// 출력부
